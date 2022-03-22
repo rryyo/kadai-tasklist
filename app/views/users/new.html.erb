@@ -7,14 +7,14 @@
     <%= form_with(model: @user) do |f| %>
     
     <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div id="error_explanation">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   
       <div>
         <%= f.label :name, 'Name' %>
