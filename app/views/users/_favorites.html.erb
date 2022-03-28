@@ -1,0 +1,24 @@
+<% if fav_posts.any? %>
+  <ul class="list-unstyled mt-2">
+    <% fav_posts.each do |fav_post| %>
+      <li class="d-flex">
+        <img class="rounded me-2 mb-5" src="<%= gravatar_url(fav_post.user, { size: 64 }) %>" alt="">
+        <div>
+          <div>
+            <%= link_to fav_post.user.name, user_path(fav_post.user), class: "text-decoration-none" %> <span class="text-muted">posted at <%= fav_post.created_at %></span>
+          </div>
+          <div>
+            <p><%= fav_post.content %></p>
+          </div>
+          <div>
+            <% if current_user == fav_post.user %>
+              <%= link_to "Delete", fav_post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          <%= render 'favorites/fav_button', micropost: fav_post %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%== pagy_bootstrap_nav(@pagy) %>
+<% end %>

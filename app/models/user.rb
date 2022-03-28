@@ -45,4 +45,8 @@ class User < ApplicationRecord
   def checkFav?(one_post)
     self.fav_posts.include?(one_post)
   end
+  
+  def displayFav
+    Micropost.where(micropost_id: self.fav_post_ids)
+  end
 end
